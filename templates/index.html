@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title> find if a sum exists for a number </title>
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <script type="text/javascript" src="/static/js/angular.min.js"></script>
+    <script type="text/javascript" src="/static/js/project.js"></script>
+  </head>
+{% raw %}
+  <body>
+    <div ng-controller="SumCtrl" class="container">
+      <hr>
+      <div class="hero-unit">
+        <h1>
+          Sum Exists
+        </h1>
+        <p>
+          Enter some numbers and see what happens!
+        </p>
+        
+        <form name="myForm" class="control-group" ng-submit="findSum()">
+
+          <div ng-class="{error: myForm.name.$invalid}">
+            <label>Numbers</label>
+            <input type="text" name="inputlist" ng-model="inputList" size="30" ng-pattern=listRegEx placeholder="Comma Separated List" required>
+            <span ng-show="myForm.inputlist.$error.required" class="help-inline">Required</span>
+            <span ng-show="myForm.inputlist.$error.pattern" class="help-inline">Invalid comma separated list of numbers!</span>
+          </div>
+
+          <div ng-class="{error: myForm.name.$invalid}">
+            <label>Sum</label>
+            <input type="text" name="target" ng-model="targetSum" size="20" ng-pattern=intRegEx placeholder="Number" required>
+            <span ng-show="myForm.target.$error.required" class="help-inline">Required</span>
+            <span ng-show="myForm.target.$error.pattern" class="help-inline">Enter a number please!</span>
+          </div>
+
+          <input class="btn-primary" ng-disabled="myForm.$invalid" type="submit" value="Check"> 
+        </form>
+        <h2>
+        Found: {{result}}
+        </h2>
+      <div class="hero-unit">
+    </div>
+  </body>
+</html>
+{% endraw %}
